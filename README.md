@@ -51,6 +51,16 @@ It delivers an instant UI reaction and delivers much better UX, especially in sl
 </script>
 ```
 
+# Using loading overlay
+Add "turbo" class to dynamic elements. Now, while wire:navigate is loading data, every element will be overlayed with loading overlay (.loading-overlay class will be applied). 
+```
+<main>
+  <h1>Product details</h1>
+  <p class="... turbo">{{ $product->name }}</p>
+  <img class="... turbo" src="{{ $product->image->path }}"/>
+</main>
+```
+
 # Caveats
 - Navigate Turbo doesn't work with wire:navigate.hover, since it doesn't trigger click event.
 - Since LiveWire is not aborting previous wire:navigate operation when new request is made (ex. user meanwhile clicks some other link), an UI flickering may occur. I hope I'm gonna find a workaround soon.
