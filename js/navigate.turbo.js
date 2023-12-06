@@ -126,3 +126,6 @@ navigateTurbo.registerListeners = () => {
 		}, 100);
 	});
 };
+
+// Dispatch event that navigateTurbo is ready:
+document.dispatchEvent(new CustomEvent("navigateTurbo:ready"));
