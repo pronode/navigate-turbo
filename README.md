@@ -18,8 +18,8 @@ It delivers an instant UI reaction and delivers much better UX, especially in sl
 ```html
 <head>
   ...
-  <script type="text/javascript" src="/path/to/navigate.turbo.js" defer></script>
-  <link rel="stylesheet" href="/path/to/navigate.turbo.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pronode/navigate-turbo@main/js/navigate.turbo.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pronode/navigate-turbo@main/css/navigate.turbo.css" />
   ...
 </head>
 ```
