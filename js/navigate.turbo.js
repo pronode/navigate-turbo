@@ -3,12 +3,15 @@
  *
  * Caveats:
  * - Navigate Turbo doesn't work with wire:navigate.hover, since it doesn't trigger click event.
+ * - Since LiveWire is not aborting previous wire:navigate request when new request is made
  */
 
 const navigateTurbo = {};
 
 navigateTurbo.cache = {};
 navigateTurbo.pending = null;
+navigateTurbo.originalTurboAreaElement = null;
+navigateTurbo.simpleTurboEnabled = false;
 
 navigateTurbo.init = (config) => {
 	navigateTurbo.turboAreaSelector = config.turboAreaSelector || "main";
@@ -78,8 +81,8 @@ navigateTurbo.runSwapper = (location) => {
 	// Get page from cache:
 	const page = navigateTurbo.cache[route];
 
-	// If page is not found in cache, perform simple Turbo and return:
-	if (!page) {
+	// If page is not found in cache, perform Simple Turbo and return:
+	if (!page && navigateTurbo.simpleTurboEnabled) {
 		document.querySelector(navigateTurbo.turboAreaSelector).classList.add(navigateTurbo.overlayClass);
 		return;
 	}
@@ -87,11 +90,14 @@ navigateTurbo.runSwapper = (location) => {
 	// Scroll to top of page:
 	window.scrollTo(0, 0);
 
+	// Remember original turboArea element:
+	navigateTurbo.originalTurboAreaElement = document.querySelector(navigateTurbo.turboAreaSelector);
+
 	// Replace current page with cached page:
-	document.querySelector(navigateTurbo.turboAreaSelector).replaceWith(page.element);
+	navigateTurbo.originalTurboAreaElement.replaceWith(page.element);
 
 	// Add loading overlay to every element that has 'turbo' class:
-	document.querySelectorAll(navigateTurbo.applyOverlaySelector).forEach((el) => {
+	page.element.querySelectorAll(navigateTurbo.applyOverlaySelector).forEach((el) => {
 		el.classList.add(navigateTurbo.overlayClass);
 	});
 };
@@ -113,9 +119,16 @@ navigateTurbo.registerListeners = () => {
 		navigateTurbo.runSwapper(location);
 	});
 
+	document.addEventListener("livewire:navigating", () => {
+		// Restore original turboArea element:
+		if (navigateTurbo.originalTurboAreaElement) {
+			document.querySelector(navigateTurbo.turboAreaSelector).replaceWith(navigateTurbo.originalTurboAreaElement);
+		}
+	});
+
 	document.addEventListener("livewire:navigated", () => {
 		// Simple Turbo
-		document.querySelector(navigateTurbo.turboAreaSelector).classList.remove(navigateTurbo.overlayClass);
+		navigateTurbo.simpleTurboEnabled && document.querySelector(navigateTurbo.turboAreaSelector).classList.remove(navigateTurbo.overlayClass);
 
 		// Add data-scroll-x to body so LiveWire "maintains" scroll position:
 		document.body.setAttribute("data-scroll-x", window.scrollX);
