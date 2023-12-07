@@ -11,7 +11,7 @@ const navigateTurbo = {};
 navigateTurbo.cache = {};
 navigateTurbo.pending = null;
 navigateTurbo.originalTurboAreaElement = null;
-navigateTurbo.simpleTurboEnabled = false;
+navigateTurbo.simpleTurboEnabled = true;
 
 navigateTurbo.init = (config) => {
 	navigateTurbo.turboAreaSelector = config.turboAreaSelector || "main";
