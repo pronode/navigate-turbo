@@ -1,9 +1,5 @@
 /**
  * Navigate Turbo.
- *
- * Caveats:
- * - Navigate Turbo doesn't work with wire:navigate.hover, since it doesn't trigger click event.
- * - Since LiveWire is not aborting previous wire:navigate request when new request is made
  */
 
 const navigateTurbo = {};
@@ -82,8 +78,8 @@ navigateTurbo.runSwapper = (location) => {
 	const page = navigateTurbo.cache[route];
 
 	// If page is not found in cache, perform Simple Turbo and return:
-	if (!page && navigateTurbo.simpleTurboEnabled) {
-		document.querySelector(navigateTurbo.turboAreaSelector).classList.add(navigateTurbo.overlayClass);
+	if (!page) {
+		navigateTurbo.simpleTurboEnabled && document.querySelector(navigateTurbo.turboAreaSelector).classList.add(navigateTurbo.overlayClass);
 		return;
 	}
 
