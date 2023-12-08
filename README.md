@@ -45,7 +45,10 @@ It delivers an instant UI reaction and delivers much better UX, especially in sl
       applyOverlaySelector: '.turbo',
 
       // The class that Navigate Turbo applies to the elements while wire:navigate is loading content.
-      overlayClass: 'loading-overlay'
+      overlayClass: 'loading-overlay',
+
+      // If turboArea for given route is not cached yet, an overlay will be applied to whole turboArea element, performing "Simple Turbo" effect.
+      simpleTurboEnabled: true
     })
   })
 </script>
