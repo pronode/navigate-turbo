@@ -8,10 +8,10 @@ It delivers an instant UI reaction and delivers much better UX, especially in sl
 - When user visits given route again (for different product / post / whatever), cached view is displayed immediately and every element with `.turbo` (configurable) class is overlayed with loading indicator.
 - If the page has not been cached yet, whole "turboArea" is overlayed, giving a reactive feedback to the user.
 
-## Standard wire:navigate (3G connection)
+## Before: standard wire:navigate (3G connection)
 ![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-standard-wire-navigate.gif)
 
-## With Navigate Turbo (3G connection)
+## After: with Navigate Turbo (3G connection)
 ![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-with-navigate-turbo.gif)
 
 As you can see, the UI reaction is instant, regardless of connection speed and TTFB.
