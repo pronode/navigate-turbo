@@ -8,22 +8,23 @@ It delivers an instant UI reaction and delivers much better UX, especially in sl
 - When user visits given route again (for different product / post / whatever), cached view is displayed immediately and every element with `.turbo` (configurable) class is overlayed with loading indicator.
 - If the page has not been cached yet, whole "turboArea" is overlayed, giving a reactive feedback to the user.
 
-## Standard wire:navigate (on 3G connection)
+## Standard wire:navigate (3G connection)
 ![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-standard-wire-navigate.gif)
 
-## With Navigate Turbo (on 3G connection)
+## With Navigate Turbo (3G connection)
 ![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-with-navigate-turbo.gif)
 
-# Installation
-```html
-<head>
-  ...
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pronode/navigate-turbo@main/js/navigate.turbo.js" defer></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pronode/navigate-turbo@main/css/navigate.turbo.css" />
-  ...
-</head>
-```
+As you can see, the UI reaction is instant, regardless of connection speed and TTFB.
 
+# Installation (CDN)
+1. Add script, preferably inside `<head>` tag:
+  ```html
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pronode/navigate-turbo@main/js/navigate.turbo.js" defer></script>
+  ```
+2. Add default styles for `.loading-overlay`:
+  ```html
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pronode/navigate-turbo@main/css/navigate.turbo.css" />
+  ```
 # Initialization and configuration
 ```html
 <script>
