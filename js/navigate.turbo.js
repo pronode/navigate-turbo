@@ -7,13 +7,13 @@ const navigateTurbo = {};
 navigateTurbo.cache = {};
 navigateTurbo.pending = null;
 navigateTurbo.originalTurboAreaElement = null;
-navigateTurbo.simpleTurboEnabled = true;
 
 navigateTurbo.init = (config) => {
 	navigateTurbo.turboAreaSelector = config.turboAreaSelector || "main";
 	navigateTurbo.applyOverlaySelector = config.applyOverlaySelector || ".turbo";
 	navigateTurbo.overlayClass = config.overlayClass || "loading-overlay";
 	navigateTurbo.routes = config.routes || [];
+	navigateTurbo.simpleTurboEnabled = config.simpleTurboEnabled || true;
 
 	if (!navigateTurbo.routes.length) {
 		console.warn("Navigate Turbo: No routes provided. Navigate Turbo will not work.");
