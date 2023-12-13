@@ -57,13 +57,22 @@ As you can see, the UI reaction is instant, regardless of connection speed and T
 
 # Using loading overlay
 Add "turbo" class to dynamic elements. Now, while wire:navigate is loading data, every element will be overlayed with loading overlay (.loading-overlay class will be applied). 
-```
+```html
 <main>
   <h1>Product details</h1>
   <p class="... turbo">{{ $product->name }}</p>
   <img class="... turbo" src="{{ $product->image->path }}"/>
 </main>
 ```
+
+## Extra: using `.turbo-loading` class to show additional loading indicators.
+Optionally, you can add `.turbo-loading` class to the element so it is visible while the content is loading:
+```html
+<div class="turbo-loading">Updating cart...</div>
+```
+It works by adding .turbo-loading-show class to the element. Feel free to customize CSS to suit your needs.
+
+![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-navigate-turbo-loading.gif)
 
 # Caveats
 - Navigate Turbo doesn't work with wire:navigate.hover, since it doesn't trigger click event.
