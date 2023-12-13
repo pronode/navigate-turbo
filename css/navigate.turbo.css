@@ -36,3 +36,11 @@
 		transform: translateX(100%);
 	}
 }
+
+.turbo-loading {
+	visibility: hidden;
+}
+
+.turbo-loading-show {
+	visibility: visible;
+}

@@ -92,6 +92,9 @@ navigateTurbo.runSwapper = (location) => {
 	// Replace current page with cached page:
 	navigateTurbo.originalTurboAreaElement.replaceWith(page.element);
 
+	// Add .turbo-loading-show class to every element with .turbo-loading class:
+	page.element.querySelectorAll(".turbo-loading").forEach((el) => el.classList.add("turbo-loading-show"));
+
 	// Add loading overlay to every element that has 'turbo' class:
 	page.element.querySelectorAll(navigateTurbo.applyOverlaySelector).forEach((el) => {
 		el.classList.add(navigateTurbo.overlayClass);
