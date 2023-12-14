@@ -7,6 +7,7 @@ It delivers an instant UI reaction and delivers much better UX, especially in sl
 - Navigate Turbo caches main content element (configurable) - known as "turboArea" - with corresponding route key as the user browses the website.
 - When user visits given route again (for different product / post / whatever), cached view is displayed immediately and every element with `.turbo` (configurable) class is overlayed with loading indicator.
 - If the page has not been cached yet, whole "turboArea" is overlayed, giving a reactive feedback to the user.
+- You can prefetch some pages to make navigation work instantly without the need of visiting them by the user.
 
 ## Before: standard wire:navigate (3G connection)
 ![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-standard-wire-navigate.gif)
@@ -34,7 +35,8 @@ As you can see, the UI reaction is instant, regardless of connection speed and T
       // Routes to work on:
       routes: [
         '/',
-        '/products/{slug}'
+        '/products/{slug}',
+        '/cart'
       ],
 
       // Selector for turboArea.
@@ -49,7 +51,13 @@ As you can see, the UI reaction is instant, regardless of connection speed and T
       overlayClass: 'loading-overlay',
 
       // If turboArea for given route is not cached yet, an overlay will be applied to whole turboArea element, performing "Simple Turbo" effect.
-      simpleTurboEnabled: true
+      simpleTurboEnabled: true,
+
+      // You can define urls to be prefetched on initial page load:
+      prefetch: [
+        '/products/some-random-product-just-to-cache-a-view',
+        '/cart'
+      ]
     })
   })
 </script>
@@ -73,6 +81,20 @@ Optionally, you can add `.turbo-loading` class to the element so it is visible w
 It works by adding .turbo-loading-show class to the element. Feel free to customize CSS to suit your needs.
 
 ![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-navigate-turbo-loading.gif)
+
+# Prefetch
+If you want to speed up the navigation even more, you can instruct Navigate Turbo to prefetch some routes on initial page load.
+Let's consider following prefetch configuration:
+```js
+prefetch: [
+  '/products/some-random-product-just-to-cache-a-view',
+  '/cart'
+]
+```
+Navigate Turbo will load the views and cache them with corresponding route keys. 
+Now navigation to `/product/foo` or `/cart` will be instant.
+
+Important: you must be aware that this increases server usage, **it is adviced to prefetch only the most popular routes**.
 
 # Caveats
 - Navigate Turbo doesn't work with wire:navigate.hover, since it doesn't trigger click event.
