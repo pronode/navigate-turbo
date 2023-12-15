@@ -1,5 +1,5 @@
 # Navigate Turbo
-Navigate Turbo for **Laravel LiveWire 3** is a tiny script that **tremendously speeds up navigation** using **wire:navigate** directive.
+Navigate Turbo for **Laravel Livewire 3** is a tiny script that **tremendously speeds up navigation** using **wire:navigate** directive.
 
 It delivers an instant UI reaction and delivers much better UX, especially in slow connection enviroment, boosting the "SPA feeling".
 
