@@ -1,7 +1,7 @@
 # Navigate Turbo
 Navigate Turbo for **Laravel Livewire 3** is a tiny script that **tremendously speeds up navigation** using **wire:navigate** directive.
 
-It delivers an instant UI reaction and delivers much better UX, especially in slow connection enviroment, boosting the "SPA feeling".
+It delivers an instant UI reaction and delivers much better UX, especially in slow connection environment, boosting the "SPA feeling".
 
 # How it works
 - Navigate Turbo caches main content element (configurable) - known as "turboArea" - with corresponding route key as the user browses the website.
