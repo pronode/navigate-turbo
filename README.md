@@ -7,7 +7,7 @@ It delivers an instant UI reaction and delivers much better UX, especially in sl
 - Navigate Turbo caches main content element (configurable) - known as "turboArea" - with corresponding route key as the user browses the website.
 - When user visits given route again (for different product / post / whatever), cached view is displayed immediately and every element with `.turbo` (configurable) class is overlayed with loading indicator.
 - If the page has not been cached yet, whole "turboArea" is overlayed, giving a reactive feedback to the user.
-- You can prefetch some pages to make navigation work instantly without the need of visiting them by the user.
+- You can **prefetch** some pages to make navigation work instantly without the need of visiting them by the user.
 
 ## Before: standard wire:navigate (3G connection)
 ![](https://raw.githubusercontent.com/pronode/navigate-turbo/main/3G-standard-wire-navigate.gif)
@@ -92,7 +92,7 @@ prefetch: [
 ]
 ```
 Navigate Turbo will load the views and cache them with corresponding route keys. 
-Now navigation to `/product/foo` or `/cart` will be instant.
+Now navigation to `/products/foo` or `/cart` will be instant.
 
 Important: you must be aware that this increases server usage, **it is adviced to prefetch only the most popular routes**.
 
